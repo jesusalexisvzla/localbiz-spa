@@ -1,0 +1,57 @@
+---
+import Container from '@components/common/Container.astro';
+import Section from '@components/common/Section.astro';
+
+import { spaContent } from '@data/spa';
+---
+
+<Section id="about">
+    <Container>
+        <div class="about-content">
+            <span class="eyebrow">
+                {spaContent.about.eyebrow}
+            </span>
+
+            <h2>{spaContent.about.title}</h2>
+
+            <p>{spaContent.about.description}</p>
+        </div>
+    </Container>
+</Section>
+
+<style>
+    .about-content {
+        max-width: 800px;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .eyebrow {
+        display: block;
+        margin-bottom: var(--space-4);
+        color: var(--color-primary);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-semibold);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    .about-content h2 {
+        margin-bottom: var(--space-6);
+        font-size: clamp(2rem, 4vw, 3.25rem);
+        font-weight: var(--font-weight-normal);
+    }
+
+    .about-content p {
+        max-width: 65ch;
+        margin-inline: auto;
+        color: var(--color-text-muted);
+        font-size: var(--font-size-lg);
+    }
+
+    @media (max-width: 600px) {
+        .about-content p {
+            font-size: var(--font-size-base);
+        }
+    }
+</style>

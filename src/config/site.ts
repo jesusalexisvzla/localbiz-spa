@@ -7,7 +7,7 @@ const indexable =
     import.meta.env.SITE_INDEXABLE === 'true';
 
 export const siteConfig: SiteConfig = {
-    name: "Spa Business",
+    name: "Serenia Spa",
     description: "Masajes y tratamientos de bienestar en un espacio dedicado a la relajación.",
     url: siteUrl || "https://example.com",
     indexable: indexable && Boolean(siteUrl),

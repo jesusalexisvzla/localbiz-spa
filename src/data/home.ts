@@ -18,12 +18,12 @@ export interface HomeContent {
 
 export const homeContent: HomeContent = {
     hero: {
-        title: "Your business deserves a better website.",
+        title: 'Regálate un momento de calma.',
         description:
-            "A modern, fast, and responsive website designed to connect your business with more customers.",
+            'Descubre un espacio dedicado a tu bienestar, con masajes y experiencias de relajación diseñadas para desconectarte de la rutina.',
         primaryAction: {
-            label: "Get in touch",
-            href: "/#contact"
+            label: "Explorar servicios",
+            href: "/#services"
         },
         // image: {
         //     src: heroTestImage,

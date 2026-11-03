@@ -5,10 +5,11 @@ import Header from '@components/layout/Header.astro';
 import Footer from '@components/layout/Footer.astro';
 
 import Hero from '@components/sections/Hero.astro';
-
-import Button from '@components/common/Button.astro';
-import Container from '@components/common/Container.astro';
-import Section from '@components/common/Section.astro';
+import Services from '@components/sections/Services.astro';
+import About from '@components/sections/About.astro';
+import Gallery from '@components/sections/Gallery.astro';
+import BookingCalendar from '@components/sections/BookingCalendar.astro';
+import Contact from '@components/sections/Contact.astro';
 
 import { homeContent } from '@data/home';
 ---
@@ -24,29 +25,15 @@ import { homeContent } from '@data/home';
             image={homeContent.hero.image}
         />
 
-        <Section id="services" ariaLabel="Our services">
-            <Container>
-                <h2>Our services</h2>
+        <Services />
 
-                <p>
-                    Discover what we can offer you.
-                </p>
-            </Container>
-        </Section>
+        <About />
 
-        <Section id="contact" ariaLabel="Contact information">
-            <Container>
-                <h2>Contact us</h2>
+        <Gallery />
 
-                <p>
-                    Let's talk about your business.
-                </p>
+        <BookingCalendar />
 
-                <Button href="/" variant="secondary">
-                    Back to home
-                </Button>
-            </Container>
-        </Section>
+        <Contact />
     </main>
 
     <Footer />

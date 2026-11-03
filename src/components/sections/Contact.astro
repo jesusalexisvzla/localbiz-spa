@@ -1,0 +1,188 @@
+---
+import Container from '@components/common/Container.astro';
+import Section from '@components/common/Section.astro';
+
+import { siteConfig } from '@config/site';
+import { spaContent } from '@data/spa';
+
+const { contact } = siteConfig;
+
+const whatsappNumber = contact.whatsapp?.replace(/\D/g, '');
+const phoneNumber = contact.phone?.replace(/[^\d+]/g, '');
+
+const hasContactMethod = Boolean(
+    whatsappNumber || phoneNumber || contact.email
+);
+---
+
+<Section id="contact">
+    <Container>
+        <div class="contact-heading">
+            <h2>{spaContent.contact.title}</h2>
+            <p>{spaContent.contact.description}</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>Horarios</h3>
+
+                <ul>
+                    {
+                        spaContent.contact.hours.map((schedule) => (
+                            <li>
+                                <span>{schedule.days}</span>
+                                <strong>{schedule.time}</strong>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+
+            <div class="contact-card">
+                <h3>Ubicación</h3>
+
+                <p>
+                    {contact.address || 'Nogales, Sonora'}
+                </p>
+
+                {
+                    contact.mapsUrl && (
+                        <a
+                            href={contact.mapsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Ver ubicación en Google Maps
+                        </a>
+                    )
+                }
+
+                {
+                    !contact.address && (
+                        <p class="placeholder-note">
+                            Dirección pendiente de personalización.
+                        </p>
+                    )
+                }
+            </div>
+
+            {
+                hasContactMethod && (
+                    <div class="contact-card">
+                        <h3>Contáctanos</h3>
+
+                        <div class="contact-links">
+                            {whatsappNumber && (
+                                <a
+                                    href={`https://wa.me/${whatsappNumber}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    WhatsApp
+                                </a>
+                            )}
+
+                            {phoneNumber && (
+                                <a href={`tel:${phoneNumber}`}>
+                                    {contact.phone}
+                                </a>
+                            )}
+
+                            {contact.email && (
+                                <a href={`mailto:${contact.email}`}>
+                                    {contact.email}
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                )
+            }
+        </div>
+    </Container>
+</Section>
+
+<style>
+    .contact-heading {
+        max-width: 680px;
+        margin: 0 auto var(--space-12);
+        text-align: center;
+    }
+
+    .contact-heading h2 {
+        font-size: clamp(2rem, 4vw, 3.25rem);
+        font-weight: var(--font-weight-normal);
+    }
+
+    .contact-heading p {
+        color: var(--color-text-muted);
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(
+            auto-fit,
+            minmax(min(100%, 280px), 1fr)
+        );
+        gap: var(--space-6);
+    }
+
+    .contact-card {
+        min-width: 0;
+        padding: var(--space-8);
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-lg);
+    }
+
+    .contact-card h3 {
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-weight-normal);
+    }
+
+    .contact-card ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .contact-card li {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--space-4);
+    }
+
+    .contact-card li strong {
+        text-align: right;
+    }
+
+    .contact-card p,
+    .placeholder-note {
+        color: var(--color-text-muted);
+    }
+
+    .placeholder-note {
+        font-size: var(--font-size-sm);
+    }
+
+    .contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .contact-links a,
+    .contact-card > a {
+        color: var(--color-primary);
+        font-weight: var(--font-weight-semibold);
+        overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 600px) {
+        .contact-card {
+            padding: var(--space-6);
+        }
+    }
+</style>
