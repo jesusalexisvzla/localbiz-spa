@@ -7,15 +7,16 @@ const indexable =
     import.meta.env.SITE_INDEXABLE === 'true';
 
 export const siteConfig: SiteConfig = {
-    name: "Local Business",
-    description: "A modern website for local businesses.",
+    name: "Spa Business",
+    description: "Masajes y tratamientos de bienestar en un espacio dedicado a la relajación.",
     url: siteUrl || "https://example.com",
     indexable: indexable && Boolean(siteUrl),
-    language: "en",
+    language: "es-MX",
     logo: "/logo.svg",
 
     contact: {
-        email: "hello@example.com",
+        email: "spa@example.com",
+        address: "Nogales, Sonora"
     },
 
     socials: [],

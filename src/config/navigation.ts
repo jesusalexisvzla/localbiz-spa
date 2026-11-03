@@ -2,7 +2,9 @@
 import type { NavigationLink } from "@/types/site";
 
 export const mainNavigation: NavigationLink[] = [
-    { label: "Home", href: "/" },
-    { label: "Services", href: "/#services" },
-    { label: "Contact", href: "/#contact" },
+    { label: 'Inicio', href: '/' },
+    { label: 'Servicios', href: '/#services' },
+    { label: 'Nosotros', href: '/#about' },
+    { label: 'Reservaciones', href: '/#booking' },
+    { label: 'Contacto', href: '/#contact' }
 ];
